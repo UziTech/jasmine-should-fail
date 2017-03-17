@@ -1,7 +1,7 @@
 {
   "name": "jasmine-should-fail",
   "version": "1.0.1",
-  "description": "Add toEqualJson matcher to Jasmine 2.x",
+  "description": "Tests will fail if they pass and pass if they fail",
   "repository": "https://github.com/UziTech/jasmine-should-fail",
   "main": "src/jasmine-should-fail.js",
   "scripts": {
