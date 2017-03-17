@@ -3,6 +3,8 @@
 
 # jasmine-should-fail
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/UziTech/jasmine-should-fail.svg)](https://greenkeeper.io/)
+
 This adds two methods to jasmine `zdescribe` and `zit`
 
 These methods will fail if they pass and pass if they fail.
