@@ -1,6 +1,6 @@
 {
   "name": "jasmine-should-fail",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Tests will fail if they pass and pass if they fail",
   "repository": "https://github.com/UziTech/jasmine-should-fail",
   "main": "src/jasmine-should-fail.js",
