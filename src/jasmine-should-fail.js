@@ -27,6 +27,7 @@
 		var suite;
 		if (jasmine.version) {
 			suite = describe.apply(this, arguments);
+			suite.shouldFail = true;
 			suite.children.forEach(function (spec) {
 				if (!spec.shouldFail) {
 					spec.shouldFail = true;
