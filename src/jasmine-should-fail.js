@@ -16,10 +16,32 @@
 	}
 
 	function addShouldFailExpectationResult(specOrSuite, addExpectationResult) {
+		if (!specOrSuite.result.failedExpectations) {
+			specOrSuite.result.failedExpectations = [];
+		}
+		if (!specOrSuite.result.passedExpectations) {
+			specOrSuite.result.passedExpectations = [];
+		}
 		return function (passed, data, isError) {
-			addExpectationResult.call(specOrSuite, !passed, data, passed);
-			(specOrSuite.result.failedExpectations || []).forEach(function (expectResult) { formatStack(expectResult); });
-			(specOrSuite.result.passedExpectations || []).forEach(function (expectResult) { formatStack(expectResult); });
+			var failedExpectationsLength = specOrSuite.result.failedExpectations.length;
+			var passedExpectationsLength = specOrSuite.result.passedExpectations.length;
+
+			addExpectationResult.call(specOrSuite, passed, data, isError);
+
+			var expectationResults;
+			if (specOrSuite.result.failedExpectations.length > failedExpectationsLength) {
+				expectationResults = specOrSuite.result.failedExpectations.splice(failedExpectationsLength);
+				expectationResults.forEach(function (expectationResult) {
+					formatStack(expectationResult);
+					specOrSuite.result.passedExpectations.push(expectationResult);
+				});
+			} else if (specOrSuite.result.passedExpectations.length > passedExpectationsLength) {
+				expectationResults = specOrSuite.result.passedExpectations.splice(passedExpectationsLength);
+				expectationResults.forEach(function (expectationResult) {
+					formatStack(expectationResult);
+					specOrSuite.result.failedExpectations.push(expectationResult);
+				});
+			}
 		};
 	}
 
