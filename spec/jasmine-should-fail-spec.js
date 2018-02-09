@@ -26,4 +26,16 @@ describe("jasmine-should-fail", function () {
 	zit("should fail in zit", function () {
 		fail();
 	});
+
+	zdescribe("fail in before functions", function () {
+		beforeAll(function () {
+			fail();
+		});
+
+		beforeEach(function () {
+			fail();
+		});
+
+		it("will fail", function () {});
+	});
 });

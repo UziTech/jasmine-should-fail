@@ -15,11 +15,11 @@
 		expectResult.stack = stack.join("\n");
 	}
 
-	function addShouldFailExpectationResult(spec, addExpectationResult) {
+	function addShouldFailExpectationResult(specOrSuite, addExpectationResult) {
 		return function (passed, data, isError) {
-			addExpectationResult.call(spec, !passed, data, passed);
-			spec.result.failedExpectations.forEach(function (expectResult) { formatStack(expectResult); });
-			spec.result.passedExpectations.forEach(function (expectResult) { formatStack(expectResult); });
+			addExpectationResult.call(specOrSuite, !passed, data, passed);
+			(specOrSuite.result.failedExpectations || []).forEach(function (expectResult) { formatStack(expectResult); });
+			(specOrSuite.result.passedExpectations || []).forEach(function (expectResult) { formatStack(expectResult); });
 		};
 	}
 
@@ -28,6 +28,7 @@
 		if (jasmine.version) {
 			suite = describe.apply(this, arguments);
 			suite.shouldFail = true;
+			suite.addExpectationResult = addShouldFailExpectationResult(suite, suite.addExpectationResult);
 			suite.children.forEach(function (spec) {
 				if (!spec.shouldFail) {
 					spec.shouldFail = true;
