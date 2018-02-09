@@ -11,7 +11,7 @@
 			return expectResult.stack;
 		}
 		var stack = expectResult.stack.split("\n");
-		stack = stack.filter(function (line) { return !/at Spec\.addExpectationResult .*jasmine-should-fail/.test(line); });
+		stack = stack.filter(function (line) { return !/at (Spec|Suite)\.addExpectationResult .*jasmine-should-fail/.test(line); });
 		expectResult.stack = stack.join("\n");
 	}
 
