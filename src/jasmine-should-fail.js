@@ -22,11 +22,11 @@
 		if (!specOrSuite.result.passedExpectations) {
 			specOrSuite.result.passedExpectations = [];
 		}
-		return function (passed, data, isError) {
+		return function () {
 			var failedExpectationsLength = specOrSuite.result.failedExpectations.length;
 			var passedExpectationsLength = specOrSuite.result.passedExpectations.length;
 
-			addExpectationResult.call(specOrSuite, passed, data, isError);
+			addExpectationResult.apply(specOrSuite, arguments);
 
 			var expectationResults;
 			if (specOrSuite.result.failedExpectations.length > failedExpectationsLength) {
