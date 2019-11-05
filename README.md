@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/UziTech/jasmine-should-fail.png)](https://travis-ci.org/UziTech/jasmine-should-fail)
-[![Windows Build Status](https://ci.appveyor.com/api/projects/status/77kivvkdn0py6455?svg=true)](https://ci.appveyor.com/project/UziTech/jasmine-should-fail)
+[![Build Status](https://travis-ci.org/UziTech/jasmine-should-fail.svg?branch=master)](https://travis-ci.org/UziTech/jasmine-should-fail)
+[![Windows Build Status](https://ci.appveyor.com/api/projects/status/77kivvkdn0py6455/branch/master?svg=true)](https://ci.appveyor.com/project/UziTech/jasmine-should-fail)
 
 # jasmine-should-fail
 
